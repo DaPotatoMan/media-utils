@@ -25,6 +25,12 @@ export function requestPermission(name: MediaPermission) {
     .catch(() => false)
 }
 
+/**
+ * Watch a media permission
+ * @param name Name of the permission to watch
+ * @param onChange Callback function that is triggered when permission is changed
+ * @param immediate Invoke `onChange` immediately on initialization
+ */
 export function watchPermission(name: MediaPermission, onChange: (status: PermissionStatus) => void, immediate?: boolean) {
   return navigator.permissions
     .query({ name: name as PermissionName })
