@@ -1,6 +1,6 @@
 import { destroyStream } from '../stream/common'
 
-type MediaPermission = 'camera' | 'microphone'
+export type MediaPermission = 'camera' | 'microphone'
 
 /** Requests all media permissions such as: `camera` `microphone` */
 export function requestMediaPermissions() {
@@ -16,16 +16,13 @@ export function requestMediaPermissions() {
     .catch(() => false)
 }
 
-export function requestPermission(options: {
-  name: MediaPermission
-  onSuccess?: () => void
-  onFailure?: () => void
-}) {
-  const key = { camera: 'audio', microphone: 'video' }[options.name]
+/** Requests a specific media permission */
+export function requestPermission(name: MediaPermission) {
+  const key = { camera: 'audio', microphone: 'video' }[name]
 
-  navigator.mediaDevices.getUserMedia({ [key]: true })
-    .then(() => options.onSuccess?.())
-    .catch(() => options.onFailure?.())
+  return navigator.mediaDevices.getUserMedia({ [key]: true })
+    .then(() => true)
+    .catch(() => false)
 }
 
 export function watchPermission(name: MediaPermission, onChange: (status: PermissionStatus) => void, immediate?: boolean) {
