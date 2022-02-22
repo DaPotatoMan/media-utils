@@ -45,6 +45,13 @@ export function watchPermission(name: MediaPermission, onChange: (status: Permis
     })
 }
 
+/**
+ * Watch multiple media permissions
+ * @param names Names of the permissions to watch
+ * @param onChange Callback function that is triggered when a permission is changed
+ * @param immediate Invoke `onChange` immediately on initialization for respective permissions
+ * @returns Function that destroys the watcher when invoked
+ */
 export function watchPermissions(
   names: MediaPermission[],
   onChange: (name: MediaPermission, status: PermissionStatus) => void,
