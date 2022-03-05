@@ -21,7 +21,9 @@
 - [hasMediaPermissions](modules.md#hasmediapermissions)
 - [hasPermission](modules.md#haspermission)
 - [muxStreams](modules.md#muxstreams)
+- [onAnyTrackEnded](modules.md#onanytrackended)
 - [onDeviceChange](modules.md#ondevicechange)
+- [onTracksEnded](modules.md#ontracksended)
 - [requestMediaPermissions](modules.md#requestmediapermissions)
 - [requestPermission](modules.md#requestpermission)
 - [watchDevice](modules.md#watchdevice)
@@ -37,7 +39,7 @@
 
 #### Defined in
 
-[permissions/index.ts:3](https://github.com/DaPotatoMan/media-utils/blob/af26f24/src/permissions/index.ts#L3)
+[src/permissions/index.ts:3](https://github.com/DaPotatoMan/media-utils/blob/db4505f/src/permissions/index.ts#L3)
 
 ## Functions
 
@@ -65,7 +67,7 @@ Amplifies audio track of given stream
 
 #### Defined in
 
-[stream/audio.ts:4](https://github.com/DaPotatoMan/media-utils/blob/af26f24/src/stream/audio.ts#L4)
+[src/stream/audio.ts:4](https://github.com/DaPotatoMan/media-utils/blob/db4505f/src/stream/audio.ts#L4)
 
 ___
 
@@ -88,7 +90,7 @@ Stops and removes given audio stream
 
 #### Defined in
 
-[stream/common.ts:5](https://github.com/DaPotatoMan/media-utils/blob/af26f24/src/stream/common.ts#L5)
+[src/stream/common.ts:5](https://github.com/DaPotatoMan/media-utils/blob/db4505f/src/stream/common.ts#L5)
 
 ___
 
@@ -111,7 +113,7 @@ Stops and removes given audio streams
 
 #### Defined in
 
-[stream/common.ts:23](https://github.com/DaPotatoMan/media-utils/blob/af26f24/src/stream/common.ts#L23)
+[src/stream/common.ts:23](https://github.com/DaPotatoMan/media-utils/blob/db4505f/src/stream/common.ts#L23)
 
 ___
 
@@ -125,7 +127,7 @@ ___
 
 #### Defined in
 
-[devices/common.ts:11](https://github.com/DaPotatoMan/media-utils/blob/af26f24/src/devices/common.ts#L11)
+[src/devices/common.ts:11](https://github.com/DaPotatoMan/media-utils/blob/db4505f/src/devices/common.ts#L11)
 
 ___
 
@@ -157,7 +159,7 @@ Media device
 
 #### Defined in
 
-[devices/common.ts:36](https://github.com/DaPotatoMan/media-utils/blob/af26f24/src/devices/common.ts#L36)
+[src/devices/common.ts:36](https://github.com/DaPotatoMan/media-utils/blob/db4505f/src/devices/common.ts#L36)
 
 ___
 
@@ -179,7 +181,7 @@ All/Preferred devices using `enumerateDevices`
 
 #### Defined in
 
-[devices/common.ts:4](https://github.com/DaPotatoMan/media-utils/blob/af26f24/src/devices/common.ts#L4)
+[src/devices/common.ts:4](https://github.com/DaPotatoMan/media-utils/blob/db4505f/src/devices/common.ts#L4)
 
 ___
 
@@ -208,7 +210,7 @@ Filtered media devices
 
 #### Defined in
 
-[devices/common.ts:25](https://github.com/DaPotatoMan/media-utils/blob/af26f24/src/devices/common.ts#L25)
+[src/devices/common.ts:25](https://github.com/DaPotatoMan/media-utils/blob/db4505f/src/devices/common.ts#L25)
 
 ___
 
@@ -230,7 +232,7 @@ Media stream using `getUserMedia`
 
 #### Defined in
 
-[stream/common.ts:38](https://github.com/DaPotatoMan/media-utils/blob/af26f24/src/stream/common.ts#L38)
+[src/stream/common.ts:38](https://github.com/DaPotatoMan/media-utils/blob/db4505f/src/stream/common.ts#L38)
 
 ___
 
@@ -252,7 +254,7 @@ Check if both microphone and camera permissions are given
 
 #### Defined in
 
-[permissions/index.ts:85](https://github.com/DaPotatoMan/media-utils/blob/af26f24/src/permissions/index.ts#L85)
+[src/permissions/index.ts:85](https://github.com/DaPotatoMan/media-utils/blob/db4505f/src/permissions/index.ts#L85)
 
 ___
 
@@ -274,7 +276,7 @@ Check if permission has been given for a media (camera/microphone)
 
 #### Defined in
 
-[permissions/index.ts:76](https://github.com/DaPotatoMan/media-utils/blob/af26f24/src/permissions/index.ts#L76)
+[src/permissions/index.ts:76](https://github.com/DaPotatoMan/media-utils/blob/db4505f/src/permissions/index.ts#L76)
 
 ___
 
@@ -297,7 +299,45 @@ New stream with all audio tracks combined in the video stream
 
 #### Defined in
 
-[stream/audio.ts:47](https://github.com/DaPotatoMan/media-utils/blob/af26f24/src/stream/audio.ts#L47)
+[src/stream/audio.ts:47](https://github.com/DaPotatoMan/media-utils/blob/db4505f/src/stream/audio.ts#L47)
+
+___
+
+### onAnyTrackEnded
+
+▸ **onAnyTrackEnded**(`stream`, `callback`, `destroy?`): (...`args`: []) => `void`
+
+Fires when any track of a stream ends
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `stream` | `MediaStream` | - |
+| `callback` | () => `void` | - |
+| `destroy?` | `boolean` | Whether to destroy the stream when any track stops |
+
+#### Returns
+
+`fn`
+
+Function that stops the watcher
+
+▸ (...`args`): `void`
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `...args` | [] |
+
+##### Returns
+
+`void`
+
+#### Defined in
+
+[src/stream/events.ts:21](https://github.com/DaPotatoMan/media-utils/blob/db4505f/src/stream/events.ts#L21)
 
 ___
 
@@ -330,7 +370,30 @@ Destroys listener
 
 #### Defined in
 
-[devices/events.ts:8](https://github.com/DaPotatoMan/media-utils/blob/af26f24/src/devices/events.ts#L8)
+[src/devices/events.ts:8](https://github.com/DaPotatoMan/media-utils/blob/db4505f/src/devices/events.ts#L8)
+
+___
+
+### onTracksEnded
+
+▸ **onTracksEnded**(`stream`, `callback`): `void`
+
+Fires when all tracks of a stream ends
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `stream` | `MediaStream` |
+| `callback` | () => `void` |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[src/stream/events.ts:4](https://github.com/DaPotatoMan/media-utils/blob/db4505f/src/stream/events.ts#L4)
 
 ___
 
@@ -346,7 +409,7 @@ Requests all media permissions such as: `camera` `microphone`
 
 #### Defined in
 
-[permissions/index.ts:6](https://github.com/DaPotatoMan/media-utils/blob/af26f24/src/permissions/index.ts#L6)
+[src/permissions/index.ts:6](https://github.com/DaPotatoMan/media-utils/blob/db4505f/src/permissions/index.ts#L6)
 
 ___
 
@@ -368,7 +431,7 @@ Requests a specific media permission
 
 #### Defined in
 
-[permissions/index.ts:20](https://github.com/DaPotatoMan/media-utils/blob/af26f24/src/permissions/index.ts#L20)
+[src/permissions/index.ts:20](https://github.com/DaPotatoMan/media-utils/blob/db4505f/src/permissions/index.ts#L20)
 
 ___
 
@@ -395,7 +458,7 @@ ___
 
 #### Defined in
 
-[devices/events.ts:15](https://github.com/DaPotatoMan/media-utils/blob/af26f24/src/devices/events.ts#L15)
+[src/devices/events.ts:15](https://github.com/DaPotatoMan/media-utils/blob/db4505f/src/devices/events.ts#L15)
 
 ___
 
@@ -428,7 +491,7 @@ Destroys listener
 
 #### Defined in
 
-[devices/events.ts:42](https://github.com/DaPotatoMan/media-utils/blob/af26f24/src/devices/events.ts#L42)
+[src/devices/events.ts:42](https://github.com/DaPotatoMan/media-utils/blob/db4505f/src/devices/events.ts#L42)
 
 ___
 
@@ -462,7 +525,7 @@ Destroy permission watcher
 
 #### Defined in
 
-[permissions/index.ts:35](https://github.com/DaPotatoMan/media-utils/blob/af26f24/src/permissions/index.ts#L35)
+[src/permissions/index.ts:35](https://github.com/DaPotatoMan/media-utils/blob/db4505f/src/permissions/index.ts#L35)
 
 ___
 
@@ -496,4 +559,4 @@ Destroy watcher
 
 #### Defined in
 
-[permissions/index.ts:58](https://github.com/DaPotatoMan/media-utils/blob/af26f24/src/permissions/index.ts#L58)
+[src/permissions/index.ts:58](https://github.com/DaPotatoMan/media-utils/blob/db4505f/src/permissions/index.ts#L58)
