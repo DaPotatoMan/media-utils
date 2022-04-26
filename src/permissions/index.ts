@@ -18,7 +18,7 @@ export function requestMediaPermissions() {
 
 /** Requests a specific media permission */
 export function requestPermission(name: MediaPermission) {
-  const key = { camera: 'audio', microphone: 'video' }[name]
+  const key = { camera: 'video', microphone: 'audio' }[name]
 
   return navigator.mediaDevices.getUserMedia({ [key]: true })
     .then(() => true)
